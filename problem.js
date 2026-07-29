@@ -1,16 +1,22 @@
-// problem-2
-function isElevatorSafe(weights) {
-    let totalWeights = 0;
+// problem-3
+function calculateAiCost(tokensUsed) {
+    let extraUsed = (tokensUsed - 500) / 100;
+    let rate = 5;
 
-    for (let i = 0; i < weights.length; i++) {
-        totalWeights += weights[i];
-    }
+    let totalCharge = Math.floor(extraUsed) * rate;
 
-    if (!Array.isArray(weights)) {
+    if (typeof tokensUsed !== "number" || tokensUsed < 0) {
         return "Invalid";
-    } else if (totalWeights <= 400) {
-        return true;
-    } else {
-        return false;
+    } else if (tokensUsed <= 500) {
+        return 0;
     }
+
+    return totalCharge;
 }
+
+console.log(calculateAiCost(300));
+console.log(calculateAiCost(500));
+console.log(calculateAiCost(600));
+console.log(calculateAiCost(1000));
+console.log(calculateAiCost(-10));
+console.log(calculateAiCost("500"));
