@@ -1,22 +1,23 @@
-// problem-3
-function calculateAiCost(tokensUsed) {
-    let extraUsed = (tokensUsed - 500) / 100;
-    let rate = 5;
+// problem-4
 
-    let totalCharge = Math.floor(extraUsed) * rate;
+function topRatedRestaurant(restaurants) {
+    let maxRating = 0;
 
-    if (typeof tokensUsed !== "number" || tokensUsed < 0) {
-        return "Invalid";
-    } else if (tokensUsed <= 500) {
-        return 0;
+    for (let i = 0; i < restaurants.length; i++) {
+        if (maxRating < restaurants[i].rating) {
+            maxRating = restaurants[i].name.toUpperCase();
+        }
     }
+    return maxRating;
 
-    return totalCharge;
+    if (!Array.isArray(restaurants)) {
+        return "Invalid";
+    }
 }
 
-console.log(calculateAiCost(300));
-console.log(calculateAiCost(500));
-console.log(calculateAiCost(600));
-console.log(calculateAiCost(1000));
-console.log(calculateAiCost(-10));
-console.log(calculateAiCost("500"));
+console.log(
+    topRatedRestaurant([
+        { name: "Chillox", rating: 4.5 },
+        { name: "Sultan's Dine", rating: 4.8 },
+    ]),
+);
