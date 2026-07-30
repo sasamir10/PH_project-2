@@ -44,6 +44,23 @@ function calculateAiCost(tokensUsed) {
     return totalCharge;
 }
 
+// problem-4
+function topRatedRestaurant(restaurants) {
+    if (!Array.isArray(restaurants) || restaurants.length === 0) {
+        return "Invalid";
+    }
+
+    let maxRating = restaurants[0];
+
+    for (let i = 1; i < restaurants.length; i++) {
+        if (restaurants[i].rating > maxRating.rating) {
+            maxRating = restaurants[i];
+        }
+    }
+
+    return maxRating.name.toUpperCase();
+}
+
 // problem-5
 function averageResponseTime(times) {
     if (Array.isArray(times) === false) {
