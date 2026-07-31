@@ -13,15 +13,17 @@ function matchWinner(teamAGoals, teamBGoals) {
 
 // problem-2
 function isElevatorSafe(weights) {
+    if (!Array.isArray(weights)) {
+        return "Invalid";
+    }
+
     let totalWeights = 0;
 
     for (let i = 0; i < weights.length; i++) {
         totalWeights += weights[i];
     }
 
-    if (!Array.isArray(weights)) {
-        return "Invalid";
-    } else if (totalWeights <= 400) {
+    if (totalWeights <= 400) {
         return true;
     } else {
         return false;
@@ -30,18 +32,17 @@ function isElevatorSafe(weights) {
 
 // problem-3
 function calculateAiCost(tokensUsed) {
-    let extraUsed = (tokensUsed - 500) / 100;
-    let rate = 5;
-
-    let totalCharge = Math.floor(extraUsed) * rate;
-
     if (typeof tokensUsed !== "number" || tokensUsed < 0) {
         return "Invalid";
-    } else if (tokensUsed <= 500) {
+    }
+
+    if (tokensUsed <= 500) {
         return 0;
     }
 
-    return totalCharge;
+    let extraUsed = (tokensUsed - 500) / 100;
+
+    return Math.floor(extraUsed) * 5;
 }
 
 // problem-4
